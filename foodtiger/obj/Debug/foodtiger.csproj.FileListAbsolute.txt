@@ -1,0 +1,11 @@
+C:\Users\iii\Desktop\ClassDecument\foodtiger\foodtiger\bin\Debug\foodtiger.exe.config
+C:\Users\iii\Desktop\ClassDecument\foodtiger\foodtiger\bin\Debug\foodtiger.exe
+C:\Users\iii\Desktop\ClassDecument\foodtiger\foodtiger\bin\Debug\foodtiger.pdb
+C:\Users\iii\Desktop\ClassDecument\foodtiger\foodtiger\obj\Debug\foodtiger.csproj.AssemblyReference.cache
+C:\Users\iii\Desktop\ClassDecument\foodtiger\foodtiger\obj\Debug\foodtiger.Form1.resources
+C:\Users\iii\Desktop\ClassDecument\foodtiger\foodtiger\obj\Debug\foodtiger.Properties.Resources.resources
+C:\Users\iii\Desktop\ClassDecument\foodtiger\foodtiger\obj\Debug\foodtiger.csproj.GenerateResource.cache
+C:\Users\iii\Desktop\ClassDecument\foodtiger\foodtiger\obj\Debug\foodtiger.csproj.CoreCompileInputs.cache
+C:\Users\iii\Desktop\ClassDecument\foodtiger\foodtiger\obj\Debug\foodtiger.exe
+C:\Users\iii\Desktop\ClassDecument\foodtiger\foodtiger\obj\Debug\foodtiger.pdb
+C:\Users\iii\Desktop\ClassDecument\foodtiger\foodtiger\obj\Debug\foodtiger.createAccount.resources
