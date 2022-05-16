@@ -81,7 +81,7 @@ namespace foodtiger
             this.txtCreateAc.Name = "txtCreateAc";
             this.txtCreateAc.Size = new System.Drawing.Size(248, 27);
             this.txtCreateAc.TabIndex = 6;
-            this.txtCreateAc.Text = "test@mail.com";
+            this.txtCreateAc.Text = "test123@mail.com";
             // 
             // label5
             // 
@@ -113,7 +113,7 @@ namespace foodtiger
             this.txtCreatePwd.Name = "txtCreatePwd";
             this.txtCreatePwd.Size = new System.Drawing.Size(248, 27);
             this.txtCreatePwd.TabIndex = 9;
-            this.txtCreatePwd.Text = "test@mail.com";
+            this.txtCreatePwd.Text = "p01020304";
             // 
             // label6
             // 

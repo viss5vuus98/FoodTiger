@@ -13,10 +13,12 @@ namespace foodtiger
 {
     public partial class Form1 : Form
     {
+        modelUser modelUser = new modelUser();
         SqlConnectionStringBuilder scsb;   //SQL 連線字串建立語法
         string myDBConnectionString = "";
         List<int> searchIDs = new List<int>(); //進階搜尋結果
         string logTable = "";
+        
         public Form1()
         {
             InitializeComponent();
@@ -51,24 +53,37 @@ namespace foodtiger
             con.Open();
             if (cUser.Checked)
             {
-                strSQL = "select * from UserAccount where UserEmail = '@userEmail'";
+                strSQL = "select * from UserAccount where UserEmail = @userEmail";
                 email = "UserEmail";
                 pwd = "UserPassWord";
             }
             else
             {
-
-                strSQL = "select * from storeAccount where storeEmail = '@userEmail'";
+                strSQL = "select * from storeAccount where storeEmail = @userEmail";
             }
             //string strSQL = "select * from UserAccount where UserEmail = '@userEmail'";
             SqlCommand cmd = new SqlCommand(strSQL, con);
             //cmd.Parameters.AddWithValue("@loginSelect", "%" + logTable + "%");
-            cmd.Parameters.AddWithValue("@userEmail", "%" + txtLogAc + "%");
+            cmd.Parameters.AddWithValue("@userEmail", txtLogAc.Text);
             SqlDataReader reader = cmd.ExecuteReader();
             if (reader.Read())
             {
-                Console.WriteLine(reader[email]);
+                Console.WriteLine((string)reader["UserEmail"]);
+                //MessageBox.Show(string.Format("{0}",reader["UserEmail"]));
+                modelUser.userInfo["id"] = reader["ID"].ToString();
+                modelUser.userInfo["email"] = (string)reader["UserEmail"];
+                modelUser.userInfo["password"] = (string)reader["UserPassWord"];
             }
+            else
+            {
+                MessageBox.Show("無此帳號");
+            }
+            foreach (KeyValuePair<string,string> item in modelUser.userInfo)
+            {
+                Console.WriteLine("id:" + item.Value);
+            }
+
+
             reader.Close();
             con.Close();
         }

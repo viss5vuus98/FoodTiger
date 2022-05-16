@@ -115,7 +115,7 @@ namespace foodtiger
             this.txtLogAc.Name = "txtLogAc";
             this.txtLogAc.Size = new System.Drawing.Size(248, 27);
             this.txtLogAc.TabIndex = 4;
-            this.txtLogAc.Text = "test@mail.com";
+            this.txtLogAc.Text = "test123@mail.com";
             // 
             // txtlogpwd
             // 
