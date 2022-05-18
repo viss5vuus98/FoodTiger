@@ -126,7 +126,7 @@ namespace foodtiger
             this.txtlogpwd.PasswordChar = '*';
             this.txtlogpwd.Size = new System.Drawing.Size(248, 27);
             this.txtlogpwd.TabIndex = 4;
-            this.txtlogpwd.Text = "test@mail.com";
+            this.txtlogpwd.Text = "p01020304";
             // 
             // cUser
             // 
@@ -163,6 +163,7 @@ namespace foodtiger
             this.btnCreateAccount.TabIndex = 6;
             this.btnCreateAccount.Text = " 我是新用戶";
             this.btnCreateAccount.UseVisualStyleBackColor = false;
+            this.btnCreateAccount.Click += new System.EventHandler(this.btnCreateAccount_Click);
             // 
             // btnLogin
             // 

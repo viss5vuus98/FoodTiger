@@ -14,11 +14,12 @@ namespace foodtiger
     public partial class Form1 : Form
     {
         modelUser modelUser = new modelUser();
+        controller controller = new controller();
         SqlConnectionStringBuilder scsb;   //SQL 連線字串建立語法
         string myDBConnectionString = "";
         List<int> searchIDs = new List<int>(); //進階搜尋結果
         string logTable = "";
-        
+
         public Form1()
         {
             InitializeComponent();
@@ -46,46 +47,36 @@ namespace foodtiger
                 MessageBox.Show("請選擇登入方式");
                 return;
             }
-            string email = "";
-            string pwd = "";
-            string strSQL ="";
-            SqlConnection con = new SqlConnection(myDBConnectionString);
-            con.Open();
+            bool loginSelect = false;
             if (cUser.Checked)
             {
-                strSQL = "select * from UserAccount where UserEmail = @userEmail";
-                email = "UserEmail";
-                pwd = "UserPassWord";
+                loginSelect = true;
+            }
+            
+            if (!controller.login(loginSelect, txtLogAc.Text, txtlogpwd.Text))
+            {
+                MessageBox.Show("帳號或密碼錯誤");
+                txtlogpwd.Text = "";
             }
             else
             {
-                strSQL = "select * from storeAccount where storeEmail = @userEmail";
+                //輸入正確 跳轉頁面
+                index index = new index();
+                index.Show();
+                modelUser.form1 = this;
+                this.Hide();              
             }
-            //string strSQL = "select * from UserAccount where UserEmail = '@userEmail'";
-            SqlCommand cmd = new SqlCommand(strSQL, con);
-            //cmd.Parameters.AddWithValue("@loginSelect", "%" + logTable + "%");
-            cmd.Parameters.AddWithValue("@userEmail", txtLogAc.Text);
-            SqlDataReader reader = cmd.ExecuteReader();
-            if (reader.Read())
+            
+            foreach (KeyValuePair<string, string> item in modelUser.userInfo)
             {
-                Console.WriteLine((string)reader["UserEmail"]);
-                //MessageBox.Show(string.Format("{0}",reader["UserEmail"]));
-                modelUser.userInfo["id"] = reader["ID"].ToString();
-                modelUser.userInfo["email"] = (string)reader["UserEmail"];
-                modelUser.userInfo["password"] = (string)reader["UserPassWord"];
+                Console.WriteLine("id 1:" + item.Value);
             }
-            else
-            {
-                MessageBox.Show("無此帳號");
-            }
-            foreach (KeyValuePair<string,string> item in modelUser.userInfo)
-            {
-                Console.WriteLine("id:" + item.Value);
-            }
+        }
 
-
-            reader.Close();
-            con.Close();
+        private void btnCreateAccount_Click(object sender, EventArgs e)
+        {
+            createAccount createAccount = new createAccount();
+            createAccount.ShowDialog();
         }
     }
 }

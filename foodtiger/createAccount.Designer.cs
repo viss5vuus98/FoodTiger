@@ -40,6 +40,7 @@ namespace foodtiger
             this.label6 = new System.Windows.Forms.Label();
             this.btnCreateAc = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.btnBack = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -81,7 +82,6 @@ namespace foodtiger
             this.txtCreateAc.Name = "txtCreateAc";
             this.txtCreateAc.Size = new System.Drawing.Size(248, 27);
             this.txtCreateAc.TabIndex = 6;
-            this.txtCreateAc.Text = "test123@mail.com";
             // 
             // label5
             // 
@@ -113,7 +113,6 @@ namespace foodtiger
             this.txtCreatePwd.Name = "txtCreatePwd";
             this.txtCreatePwd.Size = new System.Drawing.Size(248, 27);
             this.txtCreatePwd.TabIndex = 9;
-            this.txtCreatePwd.Text = "p01020304";
             // 
             // label6
             // 
@@ -131,12 +130,13 @@ namespace foodtiger
             this.btnCreateAc.BackColor = System.Drawing.Color.Silver;
             this.btnCreateAc.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.btnCreateAc.Font = new System.Drawing.Font("微軟正黑體", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.btnCreateAc.Location = new System.Drawing.Point(356, 503);
+            this.btnCreateAc.Location = new System.Drawing.Point(478, 502);
             this.btnCreateAc.Name = "btnCreateAc";
             this.btnCreateAc.Size = new System.Drawing.Size(101, 37);
             this.btnCreateAc.TabIndex = 10;
             this.btnCreateAc.Text = "創建";
             this.btnCreateAc.UseVisualStyleBackColor = false;
+            this.btnCreateAc.Click += new System.EventHandler(this.btnCreateAc_Click);
             // 
             // pictureBox1
             // 
@@ -148,6 +148,19 @@ namespace foodtiger
             this.pictureBox1.TabIndex = 11;
             this.pictureBox1.TabStop = false;
             // 
+            // btnBack
+            // 
+            this.btnBack.BackColor = System.Drawing.Color.Silver;
+            this.btnBack.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.btnBack.Font = new System.Drawing.Font("微軟正黑體", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.btnBack.Location = new System.Drawing.Point(227, 502);
+            this.btnBack.Name = "btnBack";
+            this.btnBack.Size = new System.Drawing.Size(101, 37);
+            this.btnBack.TabIndex = 10;
+            this.btnBack.Text = "返回";
+            this.btnBack.UseVisualStyleBackColor = false;
+            this.btnBack.Click += new System.EventHandler(this.btnBack_Click);
+            // 
             // createAccount
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -155,6 +168,7 @@ namespace foodtiger
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(225)))), ((int)(((byte)(225)))));
             this.ClientSize = new System.Drawing.Size(793, 592);
             this.Controls.Add(this.pictureBox1);
+            this.Controls.Add(this.btnBack);
             this.Controls.Add(this.btnCreateAc);
             this.Controls.Add(this.txtCreatePwd);
             this.Controls.Add(this.label6);
@@ -166,6 +180,7 @@ namespace foodtiger
             this.Controls.Add(this.label1);
             this.Name = "createAccount";
             this.Text = "createAccount";
+            this.Load += new System.EventHandler(this.createAccount_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -184,5 +199,6 @@ namespace foodtiger
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Button btnCreateAc;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Button btnBack;
     }
 }
