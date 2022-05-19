@@ -96,12 +96,14 @@ namespace foodtiger
             // 
             this.listview.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(225)))), ((int)(((byte)(225)))));
             this.listview.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.listview.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.listview.HideSelection = false;
-            this.listview.Location = new System.Drawing.Point(4, 138);
+            this.listview.Location = new System.Drawing.Point(0, 181);
             this.listview.Name = "listview";
-            this.listview.Size = new System.Drawing.Size(798, 552);
+            this.listview.Size = new System.Drawing.Size(801, 510);
             this.listview.TabIndex = 8;
             this.listview.UseCompatibleStateImageBehavior = false;
+            this.listview.Click += new System.EventHandler(this.listview_Click);
             // 
             // textSearch
             // 

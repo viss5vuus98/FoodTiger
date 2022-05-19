@@ -94,14 +94,39 @@ namespace foodtiger
             return result;
         }
 
-        public void renderview(ListView listView, ImageList imageList)
+        public void viewControl(ListView listView, ImageList imageList)
         {
             if (modelUser.products.Count <= 0)
             {
                 modelUser.getProductList(imageList);
             }
-            
+            //todo 搜尋功能 如果已經有資料 則提取搜尋的目標去重新render
 
+            //todo 類別分類功能
+
+
+            //todo: 呼叫model取的目標詳細資料 > 給view render畫面
+
+        }
+
+        public List<product> search(string keyword) //要回傳直
+        {
+            string key = keyword.Trim();           
+            if (keyword.Length <= 0)
+            {                
+                global.productsData = modelUser.products.ToList();
+                return global.productsData;
+            }
+            else
+            {
+                global.productsData.Clear();
+                global.productsData.Add(modelUser.products.Find(item => item.productName.Contains(keyword)));
+                foreach (product item in global.productsData)
+                {
+                    Console.WriteLine(item.imageIndex);
+                }
+                return global.productsData;
+            }           
         }
     }
 }
