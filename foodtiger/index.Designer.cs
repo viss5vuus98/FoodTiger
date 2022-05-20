@@ -37,14 +37,14 @@ namespace foodtiger
             this.listview = new System.Windows.Forms.ListView();
             this.textSearch = new System.Windows.Forms.TextBox();
             this.btnSearch = new System.Windows.Forms.Button();
-            this.cboxClass = new System.Windows.Forms.ComboBox();
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
+            this.panel1 = new System.Windows.Forms.Panel();
             this.SuspendLayout();
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(225)))), ((int)(((byte)(225)))));
+            this.label2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(246)))), ((int)(((byte)(154)))), ((int)(((byte)(176)))));
             this.label2.Font = new System.Drawing.Font("Corbel", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.Location = new System.Drawing.Point(38, 22);
             this.label2.Name = "label2";
@@ -128,20 +128,19 @@ namespace foodtiger
             this.btnSearch.UseVisualStyleBackColor = false;
             this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
             // 
-            // cboxClass
-            // 
-            this.cboxClass.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.cboxClass.FormattingEnabled = true;
-            this.cboxClass.Location = new System.Drawing.Point(315, 112);
-            this.cboxClass.Name = "cboxClass";
-            this.cboxClass.Size = new System.Drawing.Size(123, 20);
-            this.cboxClass.TabIndex = 11;
-            // 
             // imageList1
             // 
             this.imageList1.ColorDepth = System.Windows.Forms.ColorDepth.Depth32Bit;
             this.imageList1.ImageSize = new System.Drawing.Size(80, 80);
             this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
+            // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(246)))), ((int)(((byte)(154)))), ((int)(((byte)(176)))));
+            this.panel1.Location = new System.Drawing.Point(0, -5);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(804, 74);
+            this.panel1.TabIndex = 29;
             // 
             // index
             // 
@@ -149,7 +148,6 @@ namespace foodtiger
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(225)))), ((int)(((byte)(225)))));
             this.ClientSize = new System.Drawing.Size(801, 691);
-            this.Controls.Add(this.cboxClass);
             this.Controls.Add(this.btnSearch);
             this.Controls.Add(this.textSearch);
             this.Controls.Add(this.listview);
@@ -157,6 +155,7 @@ namespace foodtiger
             this.Controls.Add(this.btnSpcart);
             this.Controls.Add(this.btnLogout);
             this.Controls.Add(this.label2);
+            this.Controls.Add(this.panel1);
             this.Name = "index";
             this.Text = "index";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.index_FormClosing);
@@ -175,7 +174,7 @@ namespace foodtiger
         private System.Windows.Forms.ListView listview;
         private System.Windows.Forms.TextBox textSearch;
         private System.Windows.Forms.Button btnSearch;
-        private System.Windows.Forms.ComboBox cboxClass;
         private System.Windows.Forms.ImageList imageList1;
+        private System.Windows.Forms.Panel panel1;
     }
 }

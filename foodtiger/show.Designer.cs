@@ -32,7 +32,6 @@ namespace foodtiger
             this.label2 = new System.Windows.Forms.Label();
             this.btnFavorite = new System.Windows.Forms.Button();
             this.btnSpcart = new System.Windows.Forms.Button();
-            this.btnLogout = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.lblProductName = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
@@ -45,13 +44,14 @@ namespace foodtiger
             this.lblClass = new System.Windows.Forms.Label();
             this.lblAddFavorite = new System.Windows.Forms.Label();
             this.btnBack = new System.Windows.Forms.Button();
+            this.panel1 = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(225)))), ((int)(((byte)(225)))));
+            this.label2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(246)))), ((int)(((byte)(154)))), ((int)(((byte)(176)))));
             this.label2.Font = new System.Drawing.Font("Corbel", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.Location = new System.Drawing.Point(38, 22);
             this.label2.Name = "label2";
@@ -64,37 +64,26 @@ namespace foodtiger
             this.btnFavorite.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(196)))), ((int)(((byte)(196)))), ((int)(((byte)(196)))));
             this.btnFavorite.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.btnFavorite.Font = new System.Drawing.Font("微軟正黑體", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.btnFavorite.Location = new System.Drawing.Point(505, 22);
+            this.btnFavorite.Location = new System.Drawing.Point(533, 22);
             this.btnFavorite.Name = "btnFavorite";
             this.btnFavorite.Size = new System.Drawing.Size(96, 30);
             this.btnFavorite.TabIndex = 8;
             this.btnFavorite.Text = "收藏清單";
             this.btnFavorite.UseVisualStyleBackColor = false;
+            this.btnFavorite.Click += new System.EventHandler(this.btnFavorite_Click);
             // 
             // btnSpcart
             // 
             this.btnSpcart.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(196)))), ((int)(((byte)(196)))), ((int)(((byte)(196)))));
             this.btnSpcart.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.btnSpcart.Font = new System.Drawing.Font("微軟正黑體", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.btnSpcart.Location = new System.Drawing.Point(622, 22);
+            this.btnSpcart.Location = new System.Drawing.Point(654, 22);
             this.btnSpcart.Name = "btnSpcart";
             this.btnSpcart.Size = new System.Drawing.Size(74, 30);
             this.btnSpcart.TabIndex = 9;
             this.btnSpcart.Text = "購物車";
             this.btnSpcart.UseVisualStyleBackColor = false;
-            // 
-            // btnLogout
-            // 
-            this.btnLogout.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(196)))), ((int)(((byte)(196)))), ((int)(((byte)(196)))));
-            this.btnLogout.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.btnLogout.Font = new System.Drawing.Font("微軟正黑體", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.btnLogout.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.btnLogout.Location = new System.Drawing.Point(716, 22);
-            this.btnLogout.Name = "btnLogout";
-            this.btnLogout.Size = new System.Drawing.Size(74, 30);
-            this.btnLogout.TabIndex = 10;
-            this.btnLogout.Text = "登出";
-            this.btnLogout.UseVisualStyleBackColor = false;
+            this.btnSpcart.Click += new System.EventHandler(this.btnSpcart_Click);
             // 
             // label1
             // 
@@ -194,6 +183,7 @@ namespace foodtiger
             this.btnAddCart.TabIndex = 19;
             this.btnAddCart.Text = "加入購物車";
             this.btnAddCart.UseVisualStyleBackColor = false;
+            this.btnAddCart.Click += new System.EventHandler(this.btnAddCart_Click);
             // 
             // lblClass
             // 
@@ -217,6 +207,7 @@ namespace foodtiger
             this.lblAddFavorite.Size = new System.Drawing.Size(40, 27);
             this.lblAddFavorite.TabIndex = 22;
             this.lblAddFavorite.Text = "❤";
+            this.lblAddFavorite.Click += new System.EventHandler(this.lblAddFavorite_Click);
             // 
             // btnBack
             // 
@@ -230,6 +221,15 @@ namespace foodtiger
             this.btnBack.TabIndex = 23;
             this.btnBack.Text = "返回";
             this.btnBack.UseVisualStyleBackColor = false;
+            this.btnBack.Click += new System.EventHandler(this.btnBack_Click);
+            // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(246)))), ((int)(((byte)(154)))), ((int)(((byte)(176)))));
+            this.panel1.Location = new System.Drawing.Point(0, -5);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(828, 75);
+            this.panel1.TabIndex = 24;
             // 
             // show
             // 
@@ -251,8 +251,8 @@ namespace foodtiger
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btnFavorite);
             this.Controls.Add(this.btnSpcart);
-            this.Controls.Add(this.btnLogout);
             this.Controls.Add(this.label2);
+            this.Controls.Add(this.panel1);
             this.Name = "show";
             this.Text = "show";
             this.Load += new System.EventHandler(this.show_Load);
@@ -267,7 +267,6 @@ namespace foodtiger
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button btnFavorite;
         private System.Windows.Forms.Button btnSpcart;
-        private System.Windows.Forms.Button btnLogout;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label lblProductName;
         private System.Windows.Forms.PictureBox pictureBox1;
@@ -280,5 +279,6 @@ namespace foodtiger
         private System.Windows.Forms.Label lblClass;
         private System.Windows.Forms.Label lblAddFavorite;
         private System.Windows.Forms.Button btnBack;
+        private System.Windows.Forms.Panel panel1;
     }
 }

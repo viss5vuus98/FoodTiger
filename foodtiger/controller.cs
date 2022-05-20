@@ -10,7 +10,7 @@ namespace foodtiger
 {   
     class controller
     {
-        modelUser modelUser = new modelUser();
+        modelUser modelUser = new modelUser();        
         string myDBConnectionString = "";
         string logTable = "";
         public controller()
@@ -54,6 +54,7 @@ namespace foodtiger
                     modelUser.userInfo["email"] = (string)reader[email];
                     modelUser.userInfo["password"] = (string)reader[pwd];
                     MessageBox.Show("輸入正確，登入");
+                    modelUser.getFavoriteList();
                     ispwd = true;
                 }                             
             }
@@ -61,10 +62,6 @@ namespace foodtiger
             {
                 //MessageBox.Show("無此帳號"); //todo
                 return ispwd;
-            }
-            foreach (KeyValuePair<string, string> item in modelUser.userInfo)
-            {
-                Console.WriteLine("id:" + item.Value);
             }
             reader.Close();
             con.Close();
@@ -104,9 +101,21 @@ namespace foodtiger
 
             //todo 類別分類功能
 
-
             //todo: 呼叫model取的目標詳細資料 > 給view render畫面
 
+        }
+
+        public void renderFavorite(bool result, string store, string product)
+        {
+            if (result)
+            {
+                modelUser.removeFavorite(store, product);                               
+            }
+            else
+            {
+                modelUser.addFavorite(store, product);
+            }
+            modelUser.getFavoriteList();
         }
 
         public List<product> search(string keyword) //要回傳直
@@ -128,5 +137,8 @@ namespace foodtiger
                 return global.productsData;
             }           
         }
+        // controller 收進參數給MODEL  MODEL再回傳處理好的LIST給CONTROL加入TEXTBOX
+
+
     }
 }

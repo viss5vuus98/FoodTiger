@@ -40,11 +40,16 @@ namespace foodtiger
 
         private void btnSpcart_Click(object sender, EventArgs e)
         {
-
+            cart form_cart = new cart();
+            form_cart.Show();
+            modelUser.index = this;
+            this.Hide();
         }
 
         private void btnFavorite_Click(object sender, EventArgs e)
         {
+            Form2 form2 = new Form2();
+            form2.Show();
 
         }
 
