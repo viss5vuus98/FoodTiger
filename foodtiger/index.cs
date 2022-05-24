@@ -50,6 +50,8 @@ namespace foodtiger
         {
             Form2 form2 = new Form2();
             form2.Show();
+            modelUser.index = this;
+            this.Hide();
 
         }
 
@@ -87,7 +89,9 @@ namespace foodtiger
         {
             show form_show = new show();
             form_show.productIndex = (int)listview.SelectedItems[0].Index;
-            form_show.ShowDialog();
+            form_show.Show();
+            modelUser.index = this;
+            this.Hide();
         }
     }
 }

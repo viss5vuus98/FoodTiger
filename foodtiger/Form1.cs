@@ -28,7 +28,7 @@ namespace foodtiger
         private void Form1_Load(object sender, EventArgs e)
         {
             scsb = new SqlConnectionStringBuilder();
-            scsb.DataSource = @".";  //主機名稱
+            scsb.DataSource = @"DESKTOP-J4NHV3D";  //主機名稱
             scsb.InitialCatalog = "mydb"; //資料庫名稱
             scsb.IntegratedSecurity = true; //win安全驗證
             myDBConnectionString = scsb.ToString();
@@ -58,18 +58,19 @@ namespace foodtiger
                 MessageBox.Show("帳號或密碼錯誤");
                 txtlogpwd.Text = "";
             }
-            else
+            else if (loginSelect)
             {
-                //輸入正確 跳轉頁面
                 index index = new index();
                 index.Show();
                 modelUser.form1 = this;
-                this.Hide();              
-            }
-            
-            foreach (KeyValuePair<string, string> item in modelUser.userInfo)
+                this.Hide();
+            }else
             {
-                Console.WriteLine("id 1:" + item.Value);
+                //輸入正確 跳轉頁面
+                storeIndex storeIndex = new storeIndex(); 
+                storeIndex.Show();
+                modelUser.form1 = this;
+                this.Hide();
             }
         }
 

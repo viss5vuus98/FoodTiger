@@ -153,11 +153,11 @@ namespace foodtiger
             // 
             this.lblDiscount.AutoSize = true;
             this.lblDiscount.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(225)))), ((int)(((byte)(225)))));
-            this.lblDiscount.Font = new System.Drawing.Font("Noto Sans", 15.75F);
+            this.lblDiscount.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F);
             this.lblDiscount.ForeColor = System.Drawing.Color.Red;
             this.lblDiscount.Location = new System.Drawing.Point(38, 642);
             this.lblDiscount.Name = "lblDiscount";
-            this.lblDiscount.Size = new System.Drawing.Size(99, 28);
+            this.lblDiscount.Size = new System.Drawing.Size(96, 25);
             this.lblDiscount.TabIndex = 17;
             this.lblDiscount.Text = "Discount";
             // 
@@ -165,10 +165,10 @@ namespace foodtiger
             // 
             this.lblPrice.AutoSize = true;
             this.lblPrice.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(225)))), ((int)(((byte)(225)))));
-            this.lblPrice.Font = new System.Drawing.Font("Noto Sans", 18F);
+            this.lblPrice.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F);
             this.lblPrice.Location = new System.Drawing.Point(450, 638);
             this.lblPrice.Name = "lblPrice";
-            this.lblPrice.Size = new System.Drawing.Size(94, 33);
+            this.lblPrice.Size = new System.Drawing.Size(92, 29);
             this.lblPrice.TabIndex = 18;
             this.lblPrice.Text = "150 NT";
             // 
@@ -255,6 +255,7 @@ namespace foodtiger
             this.Controls.Add(this.panel1);
             this.Name = "show";
             this.Text = "show";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.show_FormClosing);
             this.Load += new System.EventHandler(this.show_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);

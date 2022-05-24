@@ -53,24 +53,23 @@ namespace foodtiger
         }
 
         private void btnBack_Click(object sender, EventArgs e)
-        {
+        {           
             this.Close();
+            
         }
 
         private void btnFavorite_Click(object sender, EventArgs e)
         {
             Form2 form_form2 = new Form2();
             form_form2.Show();
-            this.Close();
-            //Todo: from hide
+            this.Hide();
         }
 
         private void btnSpcart_Click(object sender, EventArgs e)
         {
             cart form_cart = new cart();
             form_cart.Show();
-            this.Close();
-            //Todo: from hide
+            this.Hide();
         }
 
         private void btnAddCart_Click(object sender, EventArgs e)
@@ -98,6 +97,11 @@ namespace foodtiger
                 lblAddFavorite.ForeColor = Color.Red;
                 isFavorite = true;
             }
+        }
+
+        private void show_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            modelUser.index.Show();
         }
     }
 }

@@ -73,11 +73,12 @@ namespace foodtiger
 
         private void Form2_FormClosing(object sender, FormClosingEventArgs e)
         {
-
+            modelUser.index.Show();
         }
 
         private void btnBack_Click(object sender, EventArgs e)
         {
+            
             this.Close();
         }
 
@@ -85,7 +86,7 @@ namespace foodtiger
         {
             show form_show = new show();
             form_show.Show();
-            this.Close();
+            this.Hide();
         }
     }
 }

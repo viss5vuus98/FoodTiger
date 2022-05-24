@@ -10,7 +10,8 @@ namespace foodtiger
 {   
     class controller
     {
-        modelUser modelUser = new modelUser();        
+        modelUser modelUser = new modelUser();
+        modelStore modelStore = new modelStore();
         string myDBConnectionString = "";
         string logTable = "";
         public controller()
@@ -18,7 +19,7 @@ namespace foodtiger
             modelUser modelUser = new modelUser();
             SqlConnectionStringBuilder scsb;
             scsb = new SqlConnectionStringBuilder();
-            scsb.DataSource = @".";
+            scsb.DataSource = @"DESKTOP-J4NHV3D";
             scsb.InitialCatalog = "mydb";
             scsb.IntegratedSecurity = true;
             myDBConnectionString = scsb.ToString();
@@ -36,36 +37,61 @@ namespace foodtiger
                 strSQL = "select * from UserAccount where UserEmail = @Email";
                 email = "UserEmail";
                 pwd = "UserPassWord";
+                SqlCommand cmd = new SqlCommand(strSQL, con);
+                cmd.Parameters.AddWithValue("@Email", account);
+                SqlDataReader reader = cmd.ExecuteReader();
+                if (reader.Read())
+                {
+                    if (password == (string)reader[pwd])
+                    {
+                        modelUser.userInfo["id"] = reader["ID"].ToString();
+                        modelUser.userInfo["email"] = (string)reader[email];
+                        modelUser.userInfo["password"] = (string)reader[pwd];
+                        MessageBox.Show("輸入正確，登入");
+                        modelUser.getFavoriteList();
+                        ispwd = true;
+                    }
+                }
+                else
+                {
+                    //MessageBox.Show("無此帳號"); //todo
+                    return ispwd;
+                }
+                reader.Close();
+                con.Close();
+                return ispwd;
             }
             else
             {
                 strSQL = "select * from storeAccount where storeEmail = @Email";
                 email = "storeEmail";
-                pwd = "storePassWord";
-            }
-            SqlCommand cmd = new SqlCommand(strSQL, con);
-            cmd.Parameters.AddWithValue("@Email", account);
-            SqlDataReader reader = cmd.ExecuteReader();
-            if (reader.Read())
-            {
-                if (password == (string)reader[pwd])
+                pwd = "srorePassWord";
+                SqlCommand cmd = new SqlCommand(strSQL, con);
+                cmd.Parameters.AddWithValue("@Email", account);
+                SqlDataReader reader = cmd.ExecuteReader();
+                if (reader.Read())
                 {
-                    modelUser.userInfo["id"] = reader["ID"].ToString();
-                    modelUser.userInfo["email"] = (string)reader[email];
-                    modelUser.userInfo["password"] = (string)reader[pwd];
-                    MessageBox.Show("輸入正確，登入");
-                    modelUser.getFavoriteList();
-                    ispwd = true;
-                }                             
-            }
-            else
-            {
-                //MessageBox.Show("無此帳號"); //todo
+                    if (password == (string)reader[pwd])
+                    {
+                        modelStore.storeInfo["id"] = reader["ID"].ToString();
+                        modelStore.storeInfo["email"] = (string)reader[email];
+                        modelStore.storeInfo["password"] = (string)reader[pwd];
+                        modelStore.storeInfo["name"] = (string)reader["storeName"];
+                        modelStore.storeInfo["address"] = (string)reader["storeAddress"];
+                        MessageBox.Show("輸入正確，登入");
+                        ispwd = true;
+                    }
+                }
+                else
+                {
+                    //MessageBox.Show("無此帳號"); //todo
+                    return ispwd;
+                }
+                reader.Close();
+                con.Close();
                 return ispwd;
             }
-            reader.Close();
-            con.Close();
-            return ispwd;
+            
         }
 
         public bool createAccount(string createAC, string createPwd)

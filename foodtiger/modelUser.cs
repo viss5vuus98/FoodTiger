@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
+using System.Drawing;
 
 namespace foodtiger
 {
@@ -27,7 +28,7 @@ namespace foodtiger
         {
             SqlConnectionStringBuilder scsb;
             scsb = new SqlConnectionStringBuilder();
-            scsb.DataSource = @".";
+            scsb.DataSource = @"DESKTOP-J4NHV3D";
             scsb.InitialCatalog = "mydb";
             scsb.IntegratedSecurity = true;
             myDBConnectionString = scsb.ToString();
@@ -171,7 +172,7 @@ namespace foodtiger
             {
                 string store = cartList[i].store;
                 string product = cartList[i].productName;
-                int quantity = cartList[i].buyQuantity;
+                int quantity = cartList[i].buyQuantity; //Todo這邊取得的資料有錯誤 
                 string strSQL = "insert into orderList values(@Store, @Product, @User, @Quantity, @Date)";
                 SqlCommand cmd = new SqlCommand(strSQL, con);
                 cmd.Parameters.AddWithValue("@Store", store);
@@ -187,7 +188,78 @@ namespace foodtiger
         
     }
 
-    class product
+    class modelStore
+    {
+        string myDBConnectionString = "";
+        public modelStore()
+        {
+            SqlConnectionStringBuilder scsb;
+            scsb = new SqlConnectionStringBuilder();
+            scsb.DataSource = @"DESKTOP-J4NHV3D";
+            scsb.InitialCatalog = "mydb";
+            scsb.IntegratedSecurity = true;
+            myDBConnectionString = scsb.ToString();
+        }
+        public static Dictionary<string, string> storeInfo = new Dictionary<string, string>() {
+            {"id", ""},{ "email", ""},{"password", ""},{"name", ""},{"address", ""}
+        };
+
+        public void getProductList(int id)
+        {
+            SqlConnection con = new SqlConnection(myDBConnectionString);
+            con.Open();
+            string strSQL = "select * from product where ID = @StoreID";
+            SqlCommand cmd = new SqlCommand(strSQL, con);
+            cmd.Parameters.AddWithValue("@StoreID", id);
+            SqlDataReader reader = cmd.ExecuteReader();
+            string image_dir = @"image\";
+            string image_name = "";
+            while (reader.Read())
+            {
+                product product = new product();
+                product.id = (int)reader["ID"];
+                product.productName = (string)reader["productName"];
+                product.price = (int)reader["productPrice"];
+                product.description = (string)reader["productDescription"];
+                product.stock = (int)reader["stock"];
+                product.onsale = Convert.ToInt32(reader["on sale"]);
+                product.discount = (decimal)reader["discount"];
+                product.buyQuantity = (int)reader["sold quantity"];
+                product.favoriteQuantity = (int)reader["favorite quantity"];
+                image_name = (string)reader["productImage"];
+                product.productImg = image_dir + image_name;
+                modelUser.products.Add(product);
+            }
+        }
+
+        public void storerender(ListView listView)
+        {
+            listView.Clear();
+            listView.View = View.Details;
+            listView.Columns.Add("商品名稱", 200);
+            listView.Columns.Add("售出數量", 100);
+            for (int i = 0; i < modelUser.products.Count; i++)
+            {
+                ListViewItem item = new ListViewItem();
+                item.Font = new Font("微軟正黑體", 14, FontStyle.Regular);
+                item.Text = modelUser.products[i].productName;
+                item.SubItems.Add(modelUser.products[i].buyQuantity.ToString());
+                item.Tag = modelUser.products[i].id;
+                listView.Items.Add(item);
+            }
+        }
+
+        public product getSelect(int index)
+        {
+            return modelUser.products[index];
+        }
+        //public void renderDetail(product product, Label sName, Label sold, Label favorite, PictureBox pictureBox, TextBox pName, TextBox address, TextBox des, CheckBox checkBox, TextBox discount, )
+        //{
+
+        //}
+    }
+
+    public class product
     {
         public int id = 0;
         public string productName = "";
@@ -200,6 +272,7 @@ namespace foodtiger
         public int imageIndex = 0;
         public int buyQuantity = 0;
         public string store = "";
+        public int favoriteQuantity = 0;
     }
 
 }
