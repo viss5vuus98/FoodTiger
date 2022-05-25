@@ -253,10 +253,25 @@ namespace foodtiger
         {
             return modelUser.products[index];
         }
-        //public void renderDetail(product product, Label sName, Label sold, Label favorite, PictureBox pictureBox, TextBox pName, TextBox address, TextBox des, CheckBox checkBox, TextBox discount, )
-        //{
-
-        //}
+        
+        public void update(string img, int price, string des, int stock, int onsale, decimal discount, int id, string productName)
+        {
+            SqlConnection con = new SqlConnection(myDBConnectionString);
+            con.Open();
+            string strSQL = "update product set productImage = @Image, productPrice = @Price, productDescription = @Des, stock = @Stock, [on sale] = @Onsale, discount = @Discount where ID = @ID" +
+                " and productName = @ProductName";
+            SqlCommand cmd = new SqlCommand(strSQL, con);
+            cmd.Parameters.AddWithValue("@Image", img);
+            cmd.Parameters.AddWithValue("@Price", price);
+            cmd.Parameters.AddWithValue("@Des", des);
+            cmd.Parameters.AddWithValue("@Stock", stock);
+            cmd.Parameters.AddWithValue("@Onsale", onsale);
+            cmd.Parameters.AddWithValue("@Discount", discount);
+            cmd.Parameters.AddWithValue("@ID", id);
+            cmd.Parameters.AddWithValue("@ProductName", productName);
+            cmd.ExecuteNonQuery();
+            con.Close();          
+        }
     }
 
     public class product

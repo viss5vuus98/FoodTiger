@@ -45,6 +45,9 @@ namespace foodtiger
             this.lblAddFavorite = new System.Windows.Forms.Label();
             this.btnBack = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.lblquantity = new System.Windows.Forms.Label();
+            this.btnPlus = new System.Windows.Forms.Button();
+            this.btnSub = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -166,7 +169,7 @@ namespace foodtiger
             this.lblPrice.AutoSize = true;
             this.lblPrice.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(225)))), ((int)(((byte)(225)))));
             this.lblPrice.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F);
-            this.lblPrice.Location = new System.Drawing.Point(450, 638);
+            this.lblPrice.Location = new System.Drawing.Point(394, 639);
             this.lblPrice.Name = "lblPrice";
             this.lblPrice.Size = new System.Drawing.Size(92, 29);
             this.lblPrice.TabIndex = 18;
@@ -231,16 +234,54 @@ namespace foodtiger
             this.panel1.Size = new System.Drawing.Size(828, 75);
             this.panel1.TabIndex = 24;
             // 
+            // lblquantity
+            // 
+            this.lblquantity.AutoSize = true;
+            this.lblquantity.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(225)))), ((int)(((byte)(225)))));
+            this.lblquantity.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F);
+            this.lblquantity.Location = new System.Drawing.Point(546, 633);
+            this.lblquantity.Name = "lblquantity";
+            this.lblquantity.Size = new System.Drawing.Size(26, 29);
+            this.lblquantity.TabIndex = 18;
+            this.lblquantity.Text = "0";
+            // 
+            // btnPlus
+            // 
+            this.btnPlus.Font = new System.Drawing.Font("微軟正黑體", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.btnPlus.Location = new System.Drawing.Point(591, 640);
+            this.btnPlus.Name = "btnPlus";
+            this.btnPlus.Size = new System.Drawing.Size(19, 24);
+            this.btnPlus.TabIndex = 25;
+            this.btnPlus.Text = "+";
+            this.btnPlus.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnPlus.UseVisualStyleBackColor = true;
+            this.btnPlus.Click += new System.EventHandler(this.btnPlus_Click);
+            // 
+            // btnSub
+            // 
+            this.btnSub.Font = new System.Drawing.Font("微軟正黑體", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.btnSub.Location = new System.Drawing.Point(516, 640);
+            this.btnSub.Name = "btnSub";
+            this.btnSub.Size = new System.Drawing.Size(19, 24);
+            this.btnSub.TabIndex = 25;
+            this.btnSub.Text = "-";
+            this.btnSub.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnSub.UseVisualStyleBackColor = true;
+            this.btnSub.Click += new System.EventHandler(this.btnSub_Click);
+            // 
             // show
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(225)))), ((int)(((byte)(225)))));
             this.ClientSize = new System.Drawing.Size(801, 691);
+            this.Controls.Add(this.btnSub);
+            this.Controls.Add(this.btnPlus);
             this.Controls.Add(this.btnBack);
             this.Controls.Add(this.lblAddFavorite);
             this.Controls.Add(this.lblClass);
             this.Controls.Add(this.btnAddCart);
+            this.Controls.Add(this.lblquantity);
             this.Controls.Add(this.lblPrice);
             this.Controls.Add(this.lblDiscount);
             this.Controls.Add(this.lblDescription);
@@ -281,5 +322,8 @@ namespace foodtiger
         private System.Windows.Forms.Label lblAddFavorite;
         private System.Windows.Forms.Button btnBack;
         private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Label lblquantity;
+        private System.Windows.Forms.Button btnPlus;
+        private System.Windows.Forms.Button btnSub;
     }
 }

@@ -33,27 +33,27 @@ namespace foodtiger
             this.btnLogout = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.button1 = new System.Windows.Forms.Button();
             this.listViewProducts = new System.Windows.Forms.ListView();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.txtstock = new System.Windows.Forms.TextBox();
+            this.lblfav = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.lblFavoriteQuantity = new System.Windows.Forms.Label();
+            this.lblsold = new System.Windows.Forms.Label();
+            this.lblSalequantity = new System.Windows.Forms.Label();
+            this.btnUpdate = new System.Windows.Forms.Button();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.txtPrice = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.cboxDiscount = new System.Windows.Forms.CheckBox();
             this.txtDescription = new System.Windows.Forms.TextBox();
             this.txtdiscount = new System.Windows.Forms.TextBox();
-            this.txtpName = new System.Windows.Forms.TextBox();
+            this.lblAddress = new System.Windows.Forms.Label();
             this.lblStoreName = new System.Windows.Forms.Label();
             this.pboxProduct = new System.Windows.Forms.PictureBox();
-            this.txtPrice = new System.Windows.Forms.TextBox();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.btnUpdate = new System.Windows.Forms.Button();
-            this.lblSalequantity = new System.Windows.Forms.Label();
-            this.lblFavoriteQuantity = new System.Windows.Forms.Label();
-            this.lblsold = new System.Windows.Forms.Label();
-            this.lblfav = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
-            this.lblAddress = new System.Windows.Forms.Label();
-            this.txtstock = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
+            this.lblproductName = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pboxProduct)).BeginInit();
@@ -107,6 +107,19 @@ namespace foodtiger
             this.panel1.Size = new System.Drawing.Size(789, 74);
             this.panel1.TabIndex = 33;
             // 
+            // button1
+            // 
+            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(196)))), ((int)(((byte)(196)))), ((int)(((byte)(196)))));
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.button1.Font = new System.Drawing.Font("微軟正黑體", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.button1.Location = new System.Drawing.Point(505, 27);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(81, 30);
+            this.button1.TabIndex = 31;
+            this.button1.Text = "訂單列表";
+            this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // listViewProducts
             // 
             this.listViewProducts.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(225)))), ((int)(((byte)(225)))));
@@ -134,14 +147,111 @@ namespace foodtiger
             this.panel2.Controls.Add(this.cboxDiscount);
             this.panel2.Controls.Add(this.txtDescription);
             this.panel2.Controls.Add(this.txtdiscount);
-            this.panel2.Controls.Add(this.txtpName);
             this.panel2.Controls.Add(this.lblAddress);
+            this.panel2.Controls.Add(this.lblproductName);
             this.panel2.Controls.Add(this.lblStoreName);
             this.panel2.Controls.Add(this.pboxProduct);
             this.panel2.Location = new System.Drawing.Point(374, 134);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(416, 515);
             this.panel2.TabIndex = 35;
+            // 
+            // txtstock
+            // 
+            this.txtstock.Location = new System.Drawing.Point(311, 274);
+            this.txtstock.Name = "txtstock";
+            this.txtstock.Size = new System.Drawing.Size(59, 22);
+            this.txtstock.TabIndex = 46;
+            // 
+            // lblfav
+            // 
+            this.lblfav.AutoSize = true;
+            this.lblfav.Font = new System.Drawing.Font("微軟正黑體", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.lblfav.Location = new System.Drawing.Point(354, 43);
+            this.lblfav.Name = "lblfav";
+            this.lblfav.Size = new System.Drawing.Size(16, 17);
+            this.lblfav.TabIndex = 45;
+            this.lblfav.Text = "0";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("微軟正黑體", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.label1.Location = new System.Drawing.Point(229, 279);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(76, 17);
+            this.label1.TabIndex = 45;
+            this.label1.Text = "庫存剩餘數:";
+            // 
+            // lblFavoriteQuantity
+            // 
+            this.lblFavoriteQuantity.AutoSize = true;
+            this.lblFavoriteQuantity.Font = new System.Drawing.Font("微軟正黑體", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.lblFavoriteQuantity.Location = new System.Drawing.Point(266, 43);
+            this.lblFavoriteQuantity.Name = "lblFavoriteQuantity";
+            this.lblFavoriteQuantity.Size = new System.Drawing.Size(63, 17);
+            this.lblFavoriteQuantity.TabIndex = 45;
+            this.lblFavoriteQuantity.Text = "被收藏數:";
+            // 
+            // lblsold
+            // 
+            this.lblsold.AutoSize = true;
+            this.lblsold.Font = new System.Drawing.Font("微軟正黑體", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.lblsold.Location = new System.Drawing.Point(354, 14);
+            this.lblsold.Name = "lblsold";
+            this.lblsold.Size = new System.Drawing.Size(16, 17);
+            this.lblsold.TabIndex = 44;
+            this.lblsold.Text = "0";
+            // 
+            // lblSalequantity
+            // 
+            this.lblSalequantity.AutoSize = true;
+            this.lblSalequantity.Font = new System.Drawing.Font("微軟正黑體", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.lblSalequantity.Location = new System.Drawing.Point(266, 14);
+            this.lblSalequantity.Name = "lblSalequantity";
+            this.lblSalequantity.Size = new System.Drawing.Size(50, 17);
+            this.lblSalequantity.TabIndex = 44;
+            this.lblSalequantity.Text = "已售出:";
+            // 
+            // btnUpdate
+            // 
+            this.btnUpdate.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(196)))), ((int)(((byte)(196)))), ((int)(((byte)(196)))));
+            this.btnUpdate.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.btnUpdate.Font = new System.Drawing.Font("微軟正黑體", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.btnUpdate.Location = new System.Drawing.Point(331, 452);
+            this.btnUpdate.Name = "btnUpdate";
+            this.btnUpdate.Size = new System.Drawing.Size(72, 34);
+            this.btnUpdate.TabIndex = 33;
+            this.btnUpdate.Text = "儲存";
+            this.btnUpdate.UseVisualStyleBackColor = false;
+            this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("微軟正黑體", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.label6.Location = new System.Drawing.Point(297, 464);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(27, 17);
+            this.label6.TabIndex = 43;
+            this.label6.Text = "NT";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("微軟正黑體", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.label5.Location = new System.Drawing.Point(190, 464);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(39, 17);
+            this.label5.TabIndex = 42;
+            this.label5.Text = "Price";
+            // 
+            // txtPrice
+            // 
+            this.txtPrice.Location = new System.Drawing.Point(235, 459);
+            this.txtPrice.Name = "txtPrice";
+            this.txtPrice.Size = new System.Drawing.Size(56, 22);
+            this.txtPrice.TabIndex = 41;
             // 
             // label4
             // 
@@ -184,14 +294,15 @@ namespace foodtiger
             this.txtdiscount.TabIndex = 37;
             this.txtdiscount.Text = "10";
             // 
-            // txtpName
+            // lblAddress
             // 
-            this.txtpName.Font = new System.Drawing.Font("微軟正黑體", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.txtpName.Location = new System.Drawing.Point(9, 270);
-            this.txtpName.Name = "txtpName";
-            this.txtpName.Size = new System.Drawing.Size(163, 33);
-            this.txtpName.TabIndex = 36;
-            this.txtpName.Text = "滷肉飯";
+            this.lblAddress.AutoSize = true;
+            this.lblAddress.Font = new System.Drawing.Font("微軟正黑體", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.lblAddress.Location = new System.Drawing.Point(13, 45);
+            this.lblAddress.Name = "lblAddress";
+            this.lblAddress.Size = new System.Drawing.Size(128, 16);
+            this.lblAddress.TabIndex = 35;
+            this.lblAddress.Text = "高雄市左營區左營大路";
             // 
             // lblStoreName
             // 
@@ -213,125 +324,15 @@ namespace foodtiger
             this.pboxProduct.TabStop = false;
             this.pboxProduct.Click += new System.EventHandler(this.pboxProduct_Click);
             // 
-            // txtPrice
+            // lblproductName
             // 
-            this.txtPrice.Location = new System.Drawing.Point(235, 459);
-            this.txtPrice.Name = "txtPrice";
-            this.txtPrice.Size = new System.Drawing.Size(56, 22);
-            this.txtPrice.TabIndex = 41;
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("微軟正黑體", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.label5.Location = new System.Drawing.Point(190, 464);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(39, 17);
-            this.label5.TabIndex = 42;
-            this.label5.Text = "Price";
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("微軟正黑體", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.label6.Location = new System.Drawing.Point(297, 464);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(27, 17);
-            this.label6.TabIndex = 43;
-            this.label6.Text = "NT";
-            // 
-            // btnUpdate
-            // 
-            this.btnUpdate.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(196)))), ((int)(((byte)(196)))), ((int)(((byte)(196)))));
-            this.btnUpdate.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.btnUpdate.Font = new System.Drawing.Font("微軟正黑體", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.btnUpdate.Location = new System.Drawing.Point(331, 452);
-            this.btnUpdate.Name = "btnUpdate";
-            this.btnUpdate.Size = new System.Drawing.Size(72, 34);
-            this.btnUpdate.TabIndex = 33;
-            this.btnUpdate.Text = "修改";
-            this.btnUpdate.UseVisualStyleBackColor = false;
-            this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
-            // 
-            // lblSalequantity
-            // 
-            this.lblSalequantity.AutoSize = true;
-            this.lblSalequantity.Font = new System.Drawing.Font("微軟正黑體", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.lblSalequantity.Location = new System.Drawing.Point(266, 14);
-            this.lblSalequantity.Name = "lblSalequantity";
-            this.lblSalequantity.Size = new System.Drawing.Size(50, 17);
-            this.lblSalequantity.TabIndex = 44;
-            this.lblSalequantity.Text = "已售出:";
-            // 
-            // lblFavoriteQuantity
-            // 
-            this.lblFavoriteQuantity.AutoSize = true;
-            this.lblFavoriteQuantity.Font = new System.Drawing.Font("微軟正黑體", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.lblFavoriteQuantity.Location = new System.Drawing.Point(266, 43);
-            this.lblFavoriteQuantity.Name = "lblFavoriteQuantity";
-            this.lblFavoriteQuantity.Size = new System.Drawing.Size(63, 17);
-            this.lblFavoriteQuantity.TabIndex = 45;
-            this.lblFavoriteQuantity.Text = "被收藏數:";
-            // 
-            // lblsold
-            // 
-            this.lblsold.AutoSize = true;
-            this.lblsold.Font = new System.Drawing.Font("微軟正黑體", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.lblsold.Location = new System.Drawing.Point(354, 14);
-            this.lblsold.Name = "lblsold";
-            this.lblsold.Size = new System.Drawing.Size(16, 17);
-            this.lblsold.TabIndex = 44;
-            this.lblsold.Text = "0";
-            // 
-            // lblfav
-            // 
-            this.lblfav.AutoSize = true;
-            this.lblfav.Font = new System.Drawing.Font("微軟正黑體", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.lblfav.Location = new System.Drawing.Point(354, 43);
-            this.lblfav.Name = "lblfav";
-            this.lblfav.Size = new System.Drawing.Size(16, 17);
-            this.lblfav.TabIndex = 45;
-            this.lblfav.Text = "0";
-            // 
-            // button1
-            // 
-            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(196)))), ((int)(((byte)(196)))), ((int)(((byte)(196)))));
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.button1.Font = new System.Drawing.Font("微軟正黑體", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.button1.Location = new System.Drawing.Point(505, 27);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(81, 30);
-            this.button1.TabIndex = 31;
-            this.button1.Text = "訂單列表";
-            this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // lblAddress
-            // 
-            this.lblAddress.AutoSize = true;
-            this.lblAddress.Font = new System.Drawing.Font("微軟正黑體", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.lblAddress.Location = new System.Drawing.Point(13, 45);
-            this.lblAddress.Name = "lblAddress";
-            this.lblAddress.Size = new System.Drawing.Size(128, 16);
-            this.lblAddress.TabIndex = 35;
-            this.lblAddress.Text = "高雄市左營區左營大路";
-            // 
-            // txtstock
-            // 
-            this.txtstock.Location = new System.Drawing.Point(311, 274);
-            this.txtstock.Name = "txtstock";
-            this.txtstock.Size = new System.Drawing.Size(59, 22);
-            this.txtstock.TabIndex = 46;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("微軟正黑體", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.label1.Location = new System.Drawing.Point(229, 279);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(76, 17);
-            this.label1.TabIndex = 45;
-            this.label1.Text = "庫存剩餘數:";
+            this.lblproductName.AutoSize = true;
+            this.lblproductName.Font = new System.Drawing.Font("微軟正黑體", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.lblproductName.Location = new System.Drawing.Point(10, 268);
+            this.lblproductName.Name = "lblproductName";
+            this.lblproductName.Size = new System.Drawing.Size(96, 26);
+            this.lblproductName.TabIndex = 35;
+            this.lblproductName.Text = "商品名稱";
             // 
             // storeIndex
             // 
@@ -369,7 +370,6 @@ namespace foodtiger
         private System.Windows.Forms.CheckBox cboxDiscount;
         private System.Windows.Forms.TextBox txtDescription;
         private System.Windows.Forms.TextBox txtdiscount;
-        private System.Windows.Forms.TextBox txtpName;
         private System.Windows.Forms.Button btnUpdate;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label5;
@@ -382,5 +382,6 @@ namespace foodtiger
         private System.Windows.Forms.Label lblAddress;
         private System.Windows.Forms.TextBox txtstock;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lblproductName;
     }
 }

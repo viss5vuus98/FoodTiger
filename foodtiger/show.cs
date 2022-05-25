@@ -16,7 +16,8 @@ namespace foodtiger
         modelUser modelUser = new modelUser();
         controller controller = new controller();
         bool isFavorite = false;
-
+        int quantity = 0;
+        int stock;
         public show()
         {
             InitializeComponent();
@@ -26,7 +27,7 @@ namespace foodtiger
         {   
             //Todo: 可以呼叫controller對以下變數賦值,from不需建構modleuser controller處理好後回傳一個arrayList或list<T>
 
-            int stock = modelUser.products[productIndex].stock;
+            stock = modelUser.products[productIndex].stock;
             int productId = modelUser.products[productIndex].id;
             string productimg = modelUser.products[productIndex].productImg;
             //Todo: 以下可使用controller會傳的陣列進行render
@@ -102,6 +103,36 @@ namespace foodtiger
         private void show_FormClosing(object sender, FormClosingEventArgs e)
         {
             modelUser.index.Show();
+        }
+
+        private void btnPlus_Click(object sender, EventArgs e)
+        {
+            quantity += 1;
+            if (quantity >= 100)
+            {
+                MessageBox.Show("超過購買上限");
+                quantity = 99;
+                return;
+            }
+            if (stock < quantity)
+            {
+                MessageBox.Show("此商品庫存不足");
+                quantity -= 1;
+            }
+                      
+            lblquantity.Text = quantity.ToString();
+        }
+
+        private void btnSub_Click(object sender, EventArgs e)
+        {
+            quantity -= 1;
+            if (quantity < 0)
+            {
+                MessageBox.Show("已經最少了");
+                quantity = 0;
+                return;
+            }           
+            lblquantity.Text = quantity.ToString();
         }
     }
 }
