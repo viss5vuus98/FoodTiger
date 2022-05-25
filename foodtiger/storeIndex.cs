@@ -91,6 +91,7 @@ namespace foodtiger
         private void btnUpdate_Click(object sender, EventArgs e)
         {
             getProductData();
+            MessageBox.Show("修改完成");
         }
 
         void getProductData()
@@ -132,7 +133,7 @@ namespace foodtiger
                 pboxProduct.Image.Save(image_dir + image_name);  //換圖片 發生泛行錯誤 解決是路徑名稱錯誤 目前檔名以原名儲存
                 isChangeImg = false;
             }
-            modelStore.update(image_name, price, txtDescription.Text, stock, onsale, discount, id, lblproductName.Text);
+            modelStore.update(image_name, price, txtDescription.Text, stock, onsale, discount, id, lblproductName.Text); //這裡不改圖片會把原本的圖片洗掉
         }
 
         private void button1_Click(object sender, EventArgs e)

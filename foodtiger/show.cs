@@ -76,8 +76,7 @@ namespace foodtiger
         private void btnAddCart_Click(object sender, EventArgs e)
         {
             int price = modelUser.products[productIndex].price;
-
-            modelUser.addToCart(lblProductName.Text, lblStoreName.Text, price, 1);
+            modelUser.addToCart(lblProductName.Text, lblStoreName.Text, price, quantity, stock);
             MessageBox.Show("已加入");
         }
 
@@ -126,10 +125,10 @@ namespace foodtiger
         private void btnSub_Click(object sender, EventArgs e)
         {
             quantity -= 1;
-            if (quantity < 0)
+            if (quantity < 1)
             {
                 MessageBox.Show("已經最少了");
-                quantity = 0;
+                quantity = 1;
                 return;
             }           
             lblquantity.Text = quantity.ToString();

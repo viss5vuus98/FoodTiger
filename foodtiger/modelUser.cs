@@ -154,13 +154,14 @@ namespace foodtiger
             }
         }
 
-        public void addToCart(string productName, string store, int price, int quantity)
+        public void addToCart(string productName, string store, int price, int quantity, int updateStock)
         {
             product product = new product();
             product.productName = productName;
             product.store = store;
             product.price = price;
             product.buyQuantity = quantity;
+            product.stock = updateStock;
             cartList.Add(product);
         }
 
@@ -172,7 +173,8 @@ namespace foodtiger
             {
                 string store = cartList[i].store;
                 string product = cartList[i].productName;
-                int quantity = cartList[i].buyQuantity; //Todo這邊取得的資料有錯誤 
+                int quantity = cartList[i].buyQuantity; //Todo 修改商品購買數
+                int stock = cartList[i].stock;
                 string strSQL = "insert into orderList values(@Store, @Product, @User, @Quantity, @Date)";
                 SqlCommand cmd = new SqlCommand(strSQL, con);
                 cmd.Parameters.AddWithValue("@Store", store);
@@ -181,6 +183,14 @@ namespace foodtiger
                 cmd.Parameters.AddWithValue("@Quantity", quantity);
                 cmd.Parameters.AddWithValue("@Date", string.Format("{0:d}", DateTime.Now));
                 cmd.ExecuteNonQuery();
+                // 更新商品庫存與被購買數
+                strSQL = "update product set stock = @UpdataStock, [sold quantity] = (select [sold quantity] from product where productName = @Product) + @Quantity where productName = @Product2";
+                SqlCommand cmd2 = new SqlCommand(strSQL, con);
+                cmd2.Parameters.AddWithValue("@UpdataStock", stock - quantity);
+                cmd2.Parameters.AddWithValue("@Product", product);
+                cmd2.Parameters.AddWithValue("@Quantity", quantity);
+                cmd2.Parameters.AddWithValue("@Product2", product);
+                cmd2.ExecuteNonQuery();
             }            
             con.Close();
 

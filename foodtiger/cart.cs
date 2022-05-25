@@ -13,6 +13,7 @@ namespace foodtiger
     public partial class cart : Form
     {
         modelUser modelUser = new modelUser();
+        public List<int> updateStockList = new List<int>();
         public cart()
         {
             InitializeComponent();
@@ -26,6 +27,9 @@ namespace foodtiger
             {
                 productName = modelUser.cartList[i].productName;
                 quantity = modelUser.cartList[i].buyQuantity;
+                int price = modelUser.cartList[i].price;
+                int updataStock = modelUser.cartList[i].stock;
+                updateStockList.Add(updataStock);
                 int strlength = productName.Length;
                 int count = 32 - strlength;
                 //找出字串的長度
@@ -36,7 +40,9 @@ namespace foodtiger
                 productName += quantity.ToString();
                 //總長扣字串長度 等於" " 或 "-" 產生次數
                 lboxCart.Items.Add(productName);
+                total += price * quantity;
             }
+            lbltotal.Text = total.ToString();
         }
 
         private void btnBuyall_Click(object sender, EventArgs e)
